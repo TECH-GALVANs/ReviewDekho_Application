@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Login.FogotPassword"></activity>
+        <activity android:name=".SignUp.SignUp"></activity>
+        <activity android:name=".Login.FogotPassword" />
         <activity android:name=".Login.Login" />
         <activity android:name=".DashboardLogin.DashboardLogin" />
         <activity android:name=".IntroSlider.introSlider" />
