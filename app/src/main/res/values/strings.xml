@@ -1,0 +1,41 @@
+<resources>
+    <string name="app_name">Review Dekho</string>
+    <string name="app_tagline">Review on the spot!</string>
+    <string name="initiative">An Initiative of TechGalvan </string>
+
+
+    <string name="introslider_button_start">"Let's Get Started"</string>
+    <string name="introslider_button_skip">SKIP</string>
+
+
+    <!-- The Heading Value in intro Slider -->
+    <string name="slider_heading_visitor">Visior </string>
+    <string name="slider_heading_user">User</string>
+    <string name="slider_heading_reviewer">Reviewer</string>
+
+    <!-- The Detail Description Value in intro Slider -->
+    <string name="slider_desc_visitor">Dare to reach out your hand into the darkness, to pull another hand into the light.</string>
+    <string name="slider_desc_user">Service to others is the rent you pay for your room here on earth.</string>
+    <string name="slider_desc_reviewer">Remember that there is no happiness in having or in getting, but only in giving.</string>
+
+    <!-- Login Signup Dashboard -->
+
+    <string name="loginsignup_dashboard_covid">Covid 19\nMaintain  Social Distance </string>
+    <string name="loginsignup_dashboard_food">Food For Everyone</string>
+
+    <string name="loginsignup_button_login">LOGIN</string>
+    <string name="loginsignup_button_signup">SIGNUP</string>
+    <string name="loginsignup_button_visitor">Continue as Visitor </string>
+    <string name="loginsignup_button_work">How we Work ? </string>
+
+
+    <!-- Login-->
+    <string name="login_text_login">LOGIN</string>
+    <string name="login_button_Forgot">Forgot Password ?</string>
+
+    <string name="login_button_login">Login</string>
+    <string name="login_button_create">Create Account</string>
+
+    <string name="login_edit_username">Email ID</string>
+    <string name="login_edit_password">Password</string>
+</resources>
