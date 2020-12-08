@@ -36,6 +36,18 @@
     <string name="login_button_login">Login</string>
     <string name="login_button_create">Create Account</string>
 
-    <string name="login_edit_username">Email ID</string>
+    <string name="login_edit_username">Email ID or username</string>
     <string name="login_edit_password">Password</string>
+    <!--  Sign Up pages-->
+    <string name="signup_title">Create\nAccount</string>
+    <string name="signup_fname">First Name</string>
+
+    <string name="signup_lname">Last Name</string>
+    <string name="signup_email">Email ID</string>
+    <string name="signup_pass">Password</string>
+    <string name="signup_username">username</string>
+
+    <string name="signup_register">Register</string>
+    <string name="signup_login">Login</string>
+    <string name="password_message">Your Password is too short!</string>
 </resources>

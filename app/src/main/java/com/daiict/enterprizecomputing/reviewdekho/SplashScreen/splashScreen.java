@@ -13,6 +13,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.daiict.enterprizecomputing.reviewdekho.DashboardLogin.DashboardLogin;
 import com.daiict.enterprizecomputing.reviewdekho.IntroSlider.introSlider;
 import com.daiict.enterprizecomputing.reviewdekho.R;
 
@@ -27,7 +28,7 @@ public class splashScreen extends AppCompatActivity {
     ImageView imageView;
     TextView txttag, txtini;
 
-    //Shared Peferences for leting know the user entry
+    //Shared Peferences for letting know the user entry
     SharedPreferences shared_introslider;
 
     @Override
@@ -72,14 +73,11 @@ public class splashScreen extends AppCompatActivity {
                     finish();
                 } else {
 
-                    Intent intent = new Intent(splashScreen.this, introSlider.class);
+
+
+                    Intent intent = new Intent(splashScreen.this, DashboardLogin.class);
                     startActivity(intent);
                     finish();
-
-
-                    //Intent intent = new Intent(splashScreen.this, LoginSignUpDashboard.class);
-                    //startActivity(intent);
-                    //finish();
                 }
 
             }
