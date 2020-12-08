@@ -7,9 +7,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Pair;
 import android.view.View;
+import android.widget.Toast;
 
 import com.daiict.enterprizecomputing.reviewdekho.Login.Login;
 import com.daiict.enterprizecomputing.reviewdekho.R;
+import com.daiict.enterprizecomputing.reviewdekho.SignUp.SignUp;
 
 public class DashboardLogin extends AppCompatActivity {
 
@@ -19,7 +21,10 @@ public class DashboardLogin extends AppCompatActivity {
         setContentView(R.layout.activity_dashboard_loginsignup);
     }
 
+    // TODO: 12/8/2020
     public void dashboardVisitorLogin(View view) {
+        //Direct Visitor Login
+        Toast.makeText(this, "You are Logged in as Visitor", Toast.LENGTH_SHORT).show();
 
 
     }
@@ -44,6 +49,18 @@ public class DashboardLogin extends AppCompatActivity {
     }
 
     public void dashboardSignUp(View view) {
+        Intent intent = new Intent(DashboardLogin.this, SignUp.class);
+        startActivity(intent);
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
+
+    public void dashboardHoweWork(View view) {
+        // How we Work
     }
 }

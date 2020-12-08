@@ -79,7 +79,7 @@
             android:layout_weight="1"
             android:textStyle="bold"
             android:textSize="17sp"
-            android:onClick="dashboardVisitorLogin"
+            android:onClick="dashboardHoweWork"
             android:layout_marginTop="20dp"
             android:textColor="@color/white"
             android:background="@drawable/button_design_transparent_border"
