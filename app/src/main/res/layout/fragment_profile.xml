@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SystemDashboard.FragmentProfile">
+
+    <LinearLayout
+        android:id="@+id/profile_fragment_profile_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Kindly Login For Profile"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:fontFamily="@font/muli_black"
+            android:textSize="28sp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="You are Logged in as Visitor"
+            android:textAlignment="center"
+            android:fontFamily="@font/muli_black"
+            android:textSize="28sp"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="LOGIN"
+            android:layout_marginTop="40dp"
+            android:layout_marginStart="160dp"
+            android:fontFamily="@font/muli_black"
+            android:background="@drawable/button_design_transparent_border"
+            />
+
+    </LinearLayout>
+
+</RelativeLayout>
