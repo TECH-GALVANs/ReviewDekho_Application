@@ -55,12 +55,13 @@
                     app:endIconMode="clear_text"
                     app:endIconTint="@color/white"
                     app:hintTextColor="@color/white"
+                    android:textColorHint="@color/white"
                     app:startIconDrawable="@drawable/username"
                     android:foregroundTint="@color/white"
                     app:startIconTint="@color/white">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/login_edit_username"
+                        android:id="@+id/login_edit_email"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:textColor="@color/white"
@@ -83,6 +84,7 @@
                     android:layout_marginTop="10dp"
                     app:endIconMode="password_toggle"
                     app:endIconTint="@color/white"
+                    android:textColorHint="@color/white"
                     app:hintTextColor="@color/white"
                     android:foregroundTint="@color/white"
                     app:startIconDrawable="@drawable/password"
@@ -144,7 +146,7 @@
         </LinearLayout>
 
         <!-- TODO-->
-        <!-- <RelativeLayout
+        <RelativeLayout
              android:id="@+id/progress_bar_login_rl"
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
@@ -166,13 +168,13 @@
                  <TextView
                      android:layout_width="wrap_content"
                      android:layout_height="wrap_content"
-                     android:text="@string/loading_progress_bar"
+                     android:text="@string/loading_progressbar"
                      android:fontFamily="@font/muli_black"
                      android:layout_marginStart="20dp"
                      android:textSize="16sp"
                      android:layout_gravity="center"/>
              </LinearLayout>
-         </RelativeLayout>-->
+         </RelativeLayout>
     </RelativeLayout>
 
 

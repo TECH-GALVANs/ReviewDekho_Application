@@ -6,7 +6,7 @@
     tools:context=".SystemDashboard.FragmentNotifications">
 
     <LinearLayout
-        android:id="@+id/notication_fragment_visitor_view"
+        android:id="@+id/notification_fragment_visitor_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
@@ -20,6 +20,7 @@
             android:fontFamily="@font/muli_black"
             android:textSize="28sp"/>
         <Button
+            android:id="@+id/notification_login_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="LOGIN"

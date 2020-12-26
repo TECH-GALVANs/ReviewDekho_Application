@@ -5,14 +5,25 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.Pair;
 import android.view.View;
 import android.widget.Toast;
 
+import com.daiict.enterprizecomputing.reviewdekho.Classes.SharedPrefManager;
+import com.daiict.enterprizecomputing.reviewdekho.Classes.UserDataClass;
+import com.daiict.enterprizecomputing.reviewdekho.DatabaseConnection.API;
 import com.daiict.enterprizecomputing.reviewdekho.Login.Login;
 import com.daiict.enterprizecomputing.reviewdekho.R;
 import com.daiict.enterprizecomputing.reviewdekho.SignUp.SignUp;
 import com.daiict.enterprizecomputing.reviewdekho.SystemDashboard.SystemDashboard;
+import com.google.android.material.snackbar.Snackbar;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class DashboardLogin extends AppCompatActivity {
 
@@ -20,14 +31,22 @@ public class DashboardLogin extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard_login);
+
+
     }
+
+
+
     // TODO: 12/8/2020
     public void dashboardVisitorLogin(View view) {
         //Direct Visitor Login
+        //Set role 5 for role preference;
+        SharedPrefManager sharedPrefManager = new SharedPrefManager(this);
+        sharedPrefManager.setRolePreference(5);
         Toast.makeText(this, "You are Logged in as Visitor", Toast.LENGTH_SHORT).show();
-
         Intent intent = new Intent(DashboardLogin.this, SystemDashboard.class);
         startActivity(intent);
+        finish();
 
     }
 
@@ -59,7 +78,7 @@ public class DashboardLogin extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        finish();
+        finishAffinity();
     }
 
     public void dashboardHoweWork(View view) {

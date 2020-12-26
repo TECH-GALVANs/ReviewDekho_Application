@@ -3,13 +3,176 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".SystemDashboard.FragmentProfile">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/colorPrimary"
+        android:elevation="9dp"
+        android:orientation="horizontal"
+        android:weightSum="10">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="20dp"
+            android:layout_weight="8"
+            android:textColor="@color/white"
+            android:fontFamily="@font/bungee"
+            android:text="Profile"
+            android:textSize="20sp" />
+
+        <ImageView
+            android:id="@+id/profile_btn_settings"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:layout_weight="2"
+            android:elevation="3dp"
+            android:paddingStart="30dp"
+            android:src="@drawable/settings_profile_fragment"
+            app:tint="@color/white" />
+
+    </LinearLayout>
+        <LinearLayout
+            android:id="@+id/linear_layout_user_visible"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="10dp"
+        android:weightSum="10">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="4.5">
+
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/circleImageView"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:src="@drawable/user"
+                app:civ_border_color="@color/colorPrimary"
+                app:civ_border_width="3dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.516"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/profilefrag_btn_floating_addimage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                app:tint="@color/blue"
+                app:fabCustomSize="30dp"
+                app:layout_constraintBottom_toBottomOf="@+id/circleImageView"
+                app:layout_constraintEnd_toEndOf="@+id/circleImageView"
+                app:layout_constraintTop_toTopOf="@+id/circleImageView"
+                app:layout_constraintVertical_bias="0.88"
+                app:maxImageSize="30dp"
+                android:backgroundTint="@color/blue"
+                app:srcCompat="@drawable/add"
+                tools:ignore="KeyboardInaccessibleWidget" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/profilefrag_text_name"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_gravity="start"
+        android:fontFamily="@font/muli_black"
+        android:paddingStart="34dp"
+        android:paddingEnd="20dp"
+        android:text="@string/profile_fragment_title_name"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+
+    <TextView
+        android:id="@+id/profile_txt_user"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:fontFamily="@font/muli_black"
+        android:paddingStart="34dp"
+        android:paddingEnd="20dp"
+        android:text="@string/profile_fragment_title_user"
+        android:textSize="18sp" />
+
+
+    <Button
+        android:id="@+id/profilefrag_btn_edit_prof"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/button_design_transparent_border"
+        android:elevation="4dp"
+        android:fontFamily="@font/muli_black"
+        android:text="@string/profile_fragment_button_edit_profile"
+        android:textStyle="bold" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="60dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/profilefrag_recyclerview_data"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:orientation="vertical"
+                android:padding="4dp"
+                android:visibility="visible" />
+
+
+        </LinearLayout>
+    </ScrollView>
+        </LinearLayout>
 
     <LinearLayout
         android:id="@+id/profile_fragment_profile_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_vertical"
+        android:visibility="gone"
+        android:gravity="center_vertical"
         android:orientation="vertical">
         <TextView
             android:layout_width="match_parent"
@@ -28,15 +191,16 @@
             android:fontFamily="@font/muli_black"
             android:textSize="28sp"/>
         <Button
+            android:id="@+id/profile_login"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="LOGIN"
             android:layout_marginTop="40dp"
             android:layout_marginStart="160dp"
             android:fontFamily="@font/muli_black"
-            android:background="@drawable/button_design_transparent_border"
-            />
+            android:background="@drawable/button_design_transparent_border"/>
 
+       </LinearLayout>
     </LinearLayout>
 
 </RelativeLayout>

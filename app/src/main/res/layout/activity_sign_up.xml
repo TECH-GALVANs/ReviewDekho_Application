@@ -44,54 +44,54 @@
             android:layout_marginTop="40dp"
             android:orientation="vertical">
 
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/signup_fname"
-                android:textColor="@color/white"
-                app:boxStrokeColor="@color/white"
-                app:boxStrokeWidthFocused="2dp"
-                app:endIconMode="clear_text"
-                app:endIconTint="@color/white"
-                app:hintTextColor="@color/white"
-                app:startIconDrawable="@drawable/edit_write"
-                app:startIconTint="@color/white">
+<!--            <com.google.android.material.textfield.TextInputLayout-->
+<!--                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:hint="@string/signup_fname"-->
+<!--                android:textColor="@color/white"-->
+<!--                app:boxStrokeColor="@color/white"-->
+<!--                app:boxStrokeWidthFocused="2dp"-->
+<!--                app:endIconMode="clear_text"-->
+<!--                app:endIconTint="@color/white"-->
+<!--                app:hintTextColor="@color/white"-->
+<!--                app:startIconDrawable="@drawable/edit_write"-->
+<!--                app:startIconTint="@color/white">-->
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/txtv_signup_fname"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:textColor="@color/white"
-                    android:fontFamily="@font/muli_black"
-                    android:inputType="text" />
-
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/signup_lname"
-                android:textColor="@color/white"
-                app:boxStrokeColor="@color/white"
-                app:boxStrokeWidthFocused="2dp"
-                app:endIconMode="clear_text"
-                app:endIconTint="@color/white"
-                app:startIconDrawable="@drawable/edit_write"
-                app:startIconTint="@color/white">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/txtv_signup_lname"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:textColor="@color/white"
-                    android:fontFamily="@font/muli_black"
-                    android:inputType="text" />
+<!--                <com.google.android.material.textfield.TextInputEditText-->
+<!--                    android:id="@+id/txtv_signup_fname"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:textColor="@color/white"-->
+<!--                    android:fontFamily="@font/muli_black"-->
+<!--                    android:inputType="text" />-->
 
 
-            </com.google.android.material.textfield.TextInputLayout>
+<!--            </com.google.android.material.textfield.TextInputLayout>-->
+
+<!--            <com.google.android.material.textfield.TextInputLayout-->
+<!--                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:hint="@string/signup_lname"-->
+<!--                android:textColor="@color/white"-->
+<!--                app:boxStrokeColor="@color/white"-->
+<!--                app:boxStrokeWidthFocused="2dp"-->
+<!--                app:endIconMode="clear_text"-->
+<!--                app:endIconTint="@color/white"-->
+<!--                app:startIconDrawable="@drawable/edit_write"-->
+<!--                app:startIconTint="@color/white">-->
+
+<!--                <com.google.android.material.textfield.TextInputEditText-->
+<!--                    android:id="@+id/txtv_signup_lname"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:textColor="@color/white"-->
+<!--                    android:fontFamily="@font/muli_black"-->
+<!--                    android:inputType="text" />-->
+
+
+<!--            </com.google.android.material.textfield.TextInputLayout>-->
 
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -100,6 +100,7 @@
                 android:hint="@string/signup_email"
                 android:textColor="@color/white"
                 app:boxStrokeColor="@color/white"
+                android:textColorHint="@color/white"
                 app:boxStrokeWidthFocused="2dp"
                 app:endIconMode="clear_text"
                 app:endIconTint="@color/white"
@@ -128,6 +129,7 @@
                 app:boxStrokeColor="@color/white"
                 app:boxStrokeWidthFocused="2dp"
                 app:endIconMode="clear_text"
+                android:textColorHint="@color/white"
                 app:endIconTint="@color/white"
                 app:hintTextColor="@color/white"
                 app:startIconDrawable="@drawable/edit_write"
@@ -155,6 +157,7 @@
                 app:endIconMode="password_toggle"
                 app:endIconTint="@color/white"
                 app:hintTextColor="@color/white"
+                android:textColorHint="@color/white"
                 app:startIconDrawable="@drawable/password"
                 app:startIconTint="@color/white">
 
@@ -180,7 +183,7 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/btn_signup_first_next"
+            android:id="@+id/btn_register"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
@@ -193,7 +196,7 @@
             tools:targetApi="lollipop" />
 
         <Button
-            android:id="@+id/btn_signup_first_login"
+            android:id="@+id/btn_login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
