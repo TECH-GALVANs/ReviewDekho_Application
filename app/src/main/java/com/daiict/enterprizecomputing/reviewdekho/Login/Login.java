@@ -98,7 +98,7 @@ public class Login extends AppCompatActivity {
     private void databaseConnectionLogin(String emailFetch)
     {
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.43.154:9090/api/")
+                .baseUrl("http://192.168.0.134:9090/api/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
@@ -122,10 +122,12 @@ public class Login extends AppCompatActivity {
                         sharedPrefManager.setRolePreference(userDataClass.getUserRole());
                         sharedPrefManager.setUserId(userDataClass.getUserRole());
                         sharedPrefManager.setUserName(userDataClass.getUsername());
+
                         //set progressbar Off
                         relativeLayoutProgress.setVisibility(View.GONE);
 
                         Intent intent = new Intent(Login.this, SystemDashboard.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
                         finish();
 
@@ -192,5 +194,20 @@ public class Login extends AppCompatActivity {
             return true;
         }
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(Login.this, DashboardLogin.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+        finish();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        finish();
     }
 }

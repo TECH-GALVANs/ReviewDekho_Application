@@ -48,7 +48,7 @@ public class SplashScreen extends AppCompatActivity {
     private String pass;
     UserDataClass userDataClass;
     private boolean state = false;
-
+    private boolean isUSer = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -90,36 +90,45 @@ public class SplashScreen extends AppCompatActivity {
             public void run() {
                 shared_introslider = getSharedPreferences("introSlider", MODE_PRIVATE);
                 boolean isfirsttimeUser = shared_introslider.getBoolean("isfirsttime", true);
-                if(state)
+                if(isUSer)
                 {
                     Intent intent = new Intent(SplashScreen.this, SystemDashboard.class);
-                    startActivity(intent);
-                    finish();
-                }else
-                {
-
-                if (isfirsttimeUser) {
-                    //After getting first time as true for the next time whem user arrives make it false
-                    SharedPreferences.Editor editor = shared_introslider.edit();
-                    editor.putBoolean("isfirsttime", false);
-                    editor.commit();
-
-
-                    Intent intent = new Intent(SplashScreen.this, IntroSlider.class);
-                    startActivity(intent);
-                    finish();
-                } else {
-
-
-
-                    Intent intent = new Intent(SplashScreen.this, DashboardLogin.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
                     finish();
                 }
 
-            }
+                else{
+                    if (state) {
+                        Intent intent = new Intent(SplashScreen.this, SystemDashboard.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(intent);
+                        finish();
+                    } else {
+
+                        if (isfirsttimeUser) {
+                            //After getting first time as true for the next time whem user arrives make it false
+                            SharedPreferences.Editor editor = shared_introslider.edit();
+                            editor.putBoolean("isfirsttime", false);
+                            editor.commit();
+
+
+                            Intent intent = new Intent(SplashScreen.this, IntroSlider.class);
+                            startActivity(intent);
+                            finish();
+                        } else {
+
+
+                            Intent intent = new Intent(SplashScreen.this, DashboardLogin.class);
+                            startActivity(intent);
+                            finish();
+                        }
+
+                    }
+                }
                 }
         }, SPLASH_SCREEN);
+
 
     }
 
@@ -129,6 +138,11 @@ public class SplashScreen extends AppCompatActivity {
         SharedPrefManager sharedPrefManager = new SharedPrefManager(this);
         String tempEmail;
         String tempPass;
+        if(sharedPrefManager.getRolePreference() ==5)
+        {
+            isUSer = true;
+            return false;
+        }
 
         tempEmail = sharedPrefManager.getEmail();
         tempPass  =sharedPrefManager.getAccPassword();
@@ -148,7 +162,7 @@ public class SplashScreen extends AppCompatActivity {
     private void databaseCheck() {
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.43.154:9090/api/")
+                .baseUrl("http://192.168.0.134:9090/api/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
@@ -177,6 +191,7 @@ public class SplashScreen extends AppCompatActivity {
                 authenticationFailed.show();
 
                 Intent intent = new Intent(SplashScreen.this, DashboardLogin.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
                 finish();
             }

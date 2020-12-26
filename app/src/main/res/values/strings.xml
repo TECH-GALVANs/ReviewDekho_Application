@@ -56,4 +56,40 @@
     <string name="signup_password_pattern">Password is too weak\n Combination length >7, upper and lower case a number </string>
 
     <string name="loading_progressbar">Loading...</string>
+
+
+
+    <string name="setting_activity_title">Settings</string>
+    <string name="setting_activity_tv_title_account">Account</string>
+    <string name="setting_activity_tv_title_support">Support</string>
+    <string name="setting_activity_tv_title_about">About</string>
+    <string name="setting_activity_tv_title_login">Authentication</string>
+    <string name="setting_activity_tv_pass">Change Password</string>
+    <string name="setting_activity_tv_general_set">General Settings</string>
+    <string name="setting_activity_tv_contact">Contact Us</string>
+    <string name="setting_activity_tv_about">About Review Dekho</string>
+    <string name="setting_activity_tv_logout">Logout</string>
+
+
+
+    <string name="setting_popup_window_title">Want to Logout?</string>
+    <string name="setting_popup_window_remember_checkbox">Remember Your Credentials</string>
+    <string name="setting_popup_window_btn_reject">Cancel</string>
+    <string name="setting_popup_window_btn_confirm">Logout</string>
+
+
+
+
+    <!--Profile Fragment -->
+    <string name="profile_fragment_title">Sahara</string>
+    <string name="profile_fragment_title_donations">Donations</string>
+    <string name="profile_fragment_title_needy">Needy</string>
+    <string name="profile_fragment_title_donation_accept">Donation Accepted</string>
+    <string name="profile_fragment_text_zero">0</string>
+    <string name="profile_fragment_title_name">Name</string>
+    <string name="profile_fragment_title_email">Email</string>
+    <string name="profile_fragment_title_user">User Type</string>
+    <string name="profile_fragment_title_dob">Date of Birth</string>
+    <string name="profile_fragment_button_edit_profile">Edit Profile</string>
+
 </resources>
