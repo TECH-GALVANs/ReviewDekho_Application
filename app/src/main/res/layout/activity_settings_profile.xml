@@ -56,18 +56,9 @@
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="10dp"
-                android:fontFamily="@font/muli_black"
-                android:onClick="passwordChangeButtonPressed"
-                android:text="@string/setting_activity_tv_pass"
-                android:textSize="18sp" />
-
 
             <TextView
+                android:id="@+id/generalSettings"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
@@ -124,16 +115,27 @@
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
+<!--            <TextView-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="20dp"-->
+<!--                android:layout_marginTop="10dp"-->
+<!--                android:fontFamily="@font/muli_black"-->
+<!--                android:onClick="aboutReviewDekhoButtonPressed"-->
+<!--                android:text="@string/setting_activity_tv_about"-->
+<!--                android:textSize="18sp" />-->
+
+
             <TextView
+                android:id="@+id/req_reviewer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/muli_black"
-                android:onClick="aboutReviewDekhoButtonPressed"
-                android:text="@string/setting_activity_tv_about"
+                android:onClick="requestReviwerMethod"
+                android:text="Request For Reviewer"
                 android:textSize="18sp" />
-
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"

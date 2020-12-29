@@ -18,12 +18,21 @@ public class UserDataClass {
     @SerializedName("user_role")
     private int userRole;
 
+    public UserDataClass(UserDataClass userDataClass)
+    {
+        this.emailID = emailID;
+        this.username = username;
+        this.accPass = accPass;
+        this.userRole = userRole;
+    }
+
     public UserDataClass(String emailID, String username, String accPass, int userRole) {
         this.emailID = emailID;
         this.username = username;
         this.accPass = accPass;
         this.userRole = userRole;
     }
+
 
     public int getUser_id() {
         return user_id;

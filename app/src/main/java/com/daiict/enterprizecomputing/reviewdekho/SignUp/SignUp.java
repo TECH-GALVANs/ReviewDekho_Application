@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.daiict.enterprizecomputing.reviewdekho.Classes.SharedPrefManager;
 import com.daiict.enterprizecomputing.reviewdekho.DashboardLogin.DashboardLogin;
 import com.daiict.enterprizecomputing.reviewdekho.DatabaseConnection.API;
 import com.daiict.enterprizecomputing.reviewdekho.Login.Login;
@@ -39,8 +40,9 @@ public class SignUp extends AppCompatActivity {
     //Data Class
     SignupClass userdData ;
 
-    //Database Connection
-    Retrofit retrofit;
+    //Shared Preference Manager
+    SharedPrefManager sharedPrefManager;
+
 
     private static final Pattern ALPHABET_ONLY = Pattern.compile("^[a-zA-Z ]+$");
     private static final Pattern PASSWORD_PATTERN = Pattern.compile("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$");
@@ -54,6 +56,8 @@ public class SignUp extends AppCompatActivity {
          editTextUsername = findViewById(R.id.txtv_signup_username);
          editTextPassword = findViewById(R.id.txtv_signup_pass);
          errorDetails = findViewById(R.id.txtPasswordMsg);
+
+         sharedPrefManager = new SharedPrefManager(this);
 
 
         editTextPassword.addTextChangedListener(new TextWatcher() {
@@ -125,7 +129,7 @@ public class SignUp extends AppCompatActivity {
 
     public void databaseConnection(){
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.0.134:9090/api/")
+                .baseUrl(sharedPrefManager.getBaseURL())
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 

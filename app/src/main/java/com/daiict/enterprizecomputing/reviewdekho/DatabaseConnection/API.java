@@ -1,6 +1,8 @@
 package com.daiict.enterprizecomputing.reviewdekho.DatabaseConnection;
 
+import com.daiict.enterprizecomputing.reviewdekho.Classes.Category;
 import com.daiict.enterprizecomputing.reviewdekho.Classes.UserDataClass;
+import com.daiict.enterprizecomputing.reviewdekho.Classes.UserReviewClass;
 import com.daiict.enterprizecomputing.reviewdekho.SignUp.SignupClass;
 import com.daiict.enterprizecomputing.reviewdekho.SignUp.Posts;
 
@@ -22,4 +24,10 @@ public interface API {
 
     @GET("user/emailid/{email}")
     Call<UserDataClass> getUserData(@Path("email") String email_id);
+
+    @GET("review")
+    Call<ArrayList<UserReviewClass>> getReviews();
+
+    @GET("category")
+    Call<ArrayList<Category>> getCategory();
 }

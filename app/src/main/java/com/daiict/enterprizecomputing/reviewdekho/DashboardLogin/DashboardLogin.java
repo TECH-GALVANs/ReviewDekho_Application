@@ -57,15 +57,8 @@ public class DashboardLogin extends AppCompatActivity {
         //From here the transition that is popup effect will be generated if and only if the API version > 21
         pairs[0] = new Pair<View,String>(findViewById(R.id.btn_login_dashboard),"btn_login_transition");
 
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
-            ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(DashboardLogin.this,pairs);
-            startActivity(intent,options.toBundle());
-        }
-        else
-        {
-            startActivity(intent);
-            finish();
-        }
+        ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(DashboardLogin.this,pairs);
+        startActivity(intent,options.toBundle());
 
     }
 
@@ -82,6 +75,10 @@ public class DashboardLogin extends AppCompatActivity {
     }
 
     public void dashboardHoweWork(View view) {
+        Intent intent = new Intent(this, HowWeWork.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+        finish();
         // How we Work
     }
 }

@@ -43,6 +43,7 @@ public class SplashScreen extends AppCompatActivity {
 
     //Shared Peferences for letting know the user entry
     SharedPreferences shared_introslider;
+    SharedPrefManager sharedPrefManager;
 
     private String email;
     private String pass;
@@ -55,6 +56,9 @@ public class SplashScreen extends AppCompatActivity {
         setContentView(R.layout.activity_splashscreen);
         //Removing Status bar from the top
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        sharedPrefManager =new SharedPrefManager(this);
+
+        sharedPrefManager.setBaseURL("http://192.168.43.154:9090/api/");
 
         top = AnimationUtils.loadAnimation(this, R.anim.top_animation);
         bottom = AnimationUtils.loadAnimation(this, R.anim.bottom_animation);
@@ -92,6 +96,7 @@ public class SplashScreen extends AppCompatActivity {
                 boolean isfirsttimeUser = shared_introslider.getBoolean("isfirsttime", true);
                 if(isUSer)
                 {
+                    Log.e("Splash : ","Shared found : Visitor");
                     Intent intent = new Intent(SplashScreen.this, SystemDashboard.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
@@ -100,6 +105,7 @@ public class SplashScreen extends AppCompatActivity {
 
                 else{
                     if (state) {
+                        Log.e("Splash : ","Database and shared value is same found");
                         Intent intent = new Intent(SplashScreen.this, SystemDashboard.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
@@ -162,7 +168,7 @@ public class SplashScreen extends AppCompatActivity {
     private void databaseCheck() {
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.0.134:9090/api/")
+                .baseUrl("http://192.168.43.154:9090/api/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
