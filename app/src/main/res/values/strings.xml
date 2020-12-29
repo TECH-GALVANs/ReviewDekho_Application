@@ -58,7 +58,6 @@
     <string name="loading_progressbar">Loading...</string>
 
 
-
     <string name="setting_activity_title">Settings</string>
     <string name="setting_activity_tv_title_account">Account</string>
     <string name="setting_activity_tv_title_support">Support</string>
@@ -71,13 +70,10 @@
     <string name="setting_activity_tv_logout">Logout</string>
 
 
-
     <string name="setting_popup_window_title">Want to Logout?</string>
     <string name="setting_popup_window_remember_checkbox">Remember Your Credentials</string>
     <string name="setting_popup_window_btn_reject">Cancel</string>
     <string name="setting_popup_window_btn_confirm">Logout</string>
-
-
 
 
     <!--Profile Fragment -->

@@ -11,6 +11,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.daiict.enterprizecomputing.reviewdekho.Classes.SharedPrefManager;
 import com.daiict.enterprizecomputing.reviewdekho.Login.Login;
@@ -20,9 +22,10 @@ import java.util.Objects;
 
 public class FragmentProfile extends Fragment {
     LinearLayout linearLayoutVisitor;
-    Button buttonLogin;
+    Button buttonLogin,editProfile;
     LinearLayout linearLayoutUser;
     SharedPrefManager sharedPrefManager;
+    TextView name,user;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -37,11 +40,35 @@ public class FragmentProfile extends Fragment {
             if (sharedPrefManager.getRolePreference() == 5) {
                 linearLayoutVisitor.setVisibility(View.VISIBLE);
 
+
+
+
+
             } else {
                 linearLayoutUser.setVisibility(View.VISIBLE);
+                editProfile = view.findViewById(R.id.profilefrag_btn_edit_prof);
+                editProfile.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        //Toast.makeText(getContext(), "", Toast.LENGTH_SHORT).show();
+                    }
+                });
+                name = view.findViewById(R.id.profilefrag_text_name);
+                user = view.findViewById(R.id.profile_txt_user);
+
+                name.setText(sharedPrefManager.getUserName());
+                if(sharedPrefManager.getRolePreference() == 0)
+                     user.setText("U S E R");
+                else {
+                    user.setText("R E V I E W E R ");
+                    user.setCompoundDrawablesRelativeWithIntrinsicBounds(0,0,R.drawable.intro_image_skip,0);
+                }
+
+
             }
 
         }
+
 
 
 

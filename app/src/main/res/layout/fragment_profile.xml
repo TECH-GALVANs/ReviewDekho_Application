@@ -107,6 +107,7 @@
         android:fontFamily="@font/muli_black"
         android:paddingStart="34dp"
         android:paddingEnd="20dp"
+        android:maxLines="1"
         android:text="@string/profile_fragment_title_name"
         android:textSize="18sp"
         android:textStyle="bold" />
@@ -117,7 +118,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="start"
-        android:fontFamily="@font/muli_black"
+        android:maxLines="1"
+        android:fontFamily="@font/holtwood_one_sc"
         android:paddingStart="34dp"
         android:paddingEnd="20dp"
         android:text="@string/profile_fragment_title_user"

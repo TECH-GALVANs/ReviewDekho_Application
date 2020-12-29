@@ -52,6 +52,17 @@ public class SharedPrefManager {
         editor.apply();
     }
 
+    public void setBaseURL(String url_Test)
+    {
+        SharedPreferences.Editor editor = sharedpreferencesData.edit();
+        editor.putString("URL", url_Test);
+        editor.apply();
+    }
+    public String getBaseURL()
+    {
+        return sharedpreferencesData.getString("URL","http://192.168.0.134:9090/api/");
+    }
+
 
     public int getUserId()
     {

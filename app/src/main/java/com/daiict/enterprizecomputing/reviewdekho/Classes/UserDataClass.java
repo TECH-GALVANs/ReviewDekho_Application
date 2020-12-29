@@ -18,12 +18,21 @@ public class UserDataClass {
     @SerializedName("user_role")
     private int userRole;
 
+    public UserDataClass(UserDataClass userDataClass)
+    {
+        this.emailID = emailID;
+        this.username = username;
+        this.accPass = accPass;
+        this.userRole = userRole;
+    }
+
     public UserDataClass(String emailID, String username, String accPass, int userRole) {
         this.emailID = emailID;
         this.username = username;
         this.accPass = accPass;
         this.userRole = userRole;
     }
+
 
     public int getUser_id() {
         return user_id;
@@ -63,6 +72,16 @@ public class UserDataClass {
 
     public void setUserRole(int userRole) {
         this.userRole = userRole;
+    }
+
+
+    @Override
+    public Object clone() {
+        try {
+            return (UserDataClass) super.clone();
+        } catch (CloneNotSupportedException e) {
+            return new UserDataClass(this.getUser_id(), this.getUsername(), this.getEmailID());
+        }
     }
 
 }
