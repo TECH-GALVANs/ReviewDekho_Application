@@ -1,5 +1,6 @@
 package com.daiict.enterprizecomputing.reviewdekho.SystemDashboard;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -12,11 +13,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Adapter;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.daiict.enterprizecomputing.reviewdekho.Classes.SharedPrefManager;
 import com.daiict.enterprizecomputing.reviewdekho.Classes.UserDataClass;
 import com.daiict.enterprizecomputing.reviewdekho.Classes.UserReviewClass;
+import com.daiict.enterprizecomputing.reviewdekho.Comments.CommentsView;
 import com.daiict.enterprizecomputing.reviewdekho.DatabaseConnection.API;
 import com.daiict.enterprizecomputing.reviewdekho.R;
 
@@ -34,6 +37,7 @@ public class FragmentFeed extends Fragment {
     ArrayList<UserReviewClass> userDataClasses = new ArrayList<UserReviewClass>();
     RecyclerView recyclerView;
     AdapterUserReviewDisplay adapterUserReviewDisplay;
+    ImageView imageView;
 
     SharedPrefManager sharedPrefManager ;
     @Override
@@ -43,11 +47,41 @@ public class FragmentFeed extends Fragment {
         sharedPrefManager  = new SharedPrefManager(Objects.requireNonNull(getContext()));
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_feed, container, false);
+        imageView = view.findViewById(R.id.feed_frag_add);
         recyclerView = view.findViewById(R.id.feed_recyclerview);
 
         adapterUserReviewDisplay = new AdapterUserReviewDisplay(getActivity(),userDataClasses);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(adapterUserReviewDisplay);
+
+        if(sharedPrefManager.getRolePreference()==5)
+        {
+            imageView.setImageResource(R.drawable.image_login);
+            imageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                }
+            });
+        }
+        else if(sharedPrefManager.getRolePreference()==1)
+        {
+            imageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getActivity(), AddReview.class);
+                    //intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    //intent.putExtra("Fragment", "profilefragment");
+                    startActivity(intent);
+                }
+            });
+
+
+        }
+        else
+        {
+            imageView.setVisibility(View.GONE);
+        }
 
         databaseConnection();
 

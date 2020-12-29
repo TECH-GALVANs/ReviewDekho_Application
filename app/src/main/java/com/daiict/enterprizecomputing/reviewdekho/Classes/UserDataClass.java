@@ -74,14 +74,4 @@ public class UserDataClass {
         this.userRole = userRole;
     }
 
-
-    @Override
-    public Object clone() {
-        try {
-            return (UserDataClass) super.clone();
-        } catch (CloneNotSupportedException e) {
-            return new UserDataClass(this.getUser_id(), this.getUsername(), this.getEmailID());
-        }
-    }
-
 }

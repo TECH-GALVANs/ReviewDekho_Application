@@ -75,6 +75,10 @@ public class DashboardLogin extends AppCompatActivity {
     }
 
     public void dashboardHoweWork(View view) {
+        Intent intent = new Intent(this, HowWeWork.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+        finish();
         // How we Work
     }
 }

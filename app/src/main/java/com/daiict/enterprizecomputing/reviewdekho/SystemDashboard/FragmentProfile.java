@@ -51,6 +51,10 @@ public class FragmentProfile extends Fragment {
                     @Override
                     public void onClick(View v) {
                         //Toast.makeText(getContext(), "", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(getActivity(), EditProfileGeneralSettings.class);
+                        //intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        //intent.putExtra("Fragment", "profilefragment");
+                        startActivity(intent);
                     }
                 });
                 name = view.findViewById(R.id.profilefrag_text_name);

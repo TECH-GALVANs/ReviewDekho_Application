@@ -19,6 +19,7 @@ import java.util.Objects;
 
 
 public class FragmentNotifications extends Fragment {
+    SharedPrefManager sharedPrefManager;
     LinearLayout linearLayoutVisitor;
     Button buttonLogin;
     @Override
@@ -26,8 +27,15 @@ public class FragmentNotifications extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_notifications, container, false);
-
+          sharedPrefManager = new SharedPrefManager(getActivity());
         linearLayoutVisitor = view.findViewById(R.id.notification_fragment_visitor_view);
+        if(sharedPrefManager.getRolePreference() != -1) {
+            if (sharedPrefManager.getRolePreference() == 5) {
+                linearLayoutVisitor.setVisibility(View.VISIBLE);
+            } else {
+                linearLayoutVisitor.setVisibility(View.GONE);
+            }
+        }
         if(linearLayoutVisitor.getVisibility()==View.VISIBLE)
         {
             buttonLogin = view.findViewById(R.id.notification_login_button);

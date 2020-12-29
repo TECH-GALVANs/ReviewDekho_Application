@@ -1,9 +1,6 @@
 package com.daiict.enterprizecomputing.reviewdekho.SystemDashboard;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,19 +10,15 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.daiict.enterprizecomputing.reviewdekho.Classes.Category;
 import com.daiict.enterprizecomputing.reviewdekho.Classes.Product;
 import com.daiict.enterprizecomputing.reviewdekho.Classes.SharedPrefManager;
 import com.daiict.enterprizecomputing.reviewdekho.Classes.SubCateory;
 import com.daiict.enterprizecomputing.reviewdekho.Classes.UserDataClass;
 import com.daiict.enterprizecomputing.reviewdekho.Classes.UserReviewClass;
-import com.daiict.enterprizecomputing.reviewdekho.CommentsView;
 import com.daiict.enterprizecomputing.reviewdekho.R;
 
 import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 
 public class AdapterUserReviewDisplay extends RecyclerView.Adapter<AdapterUserReviewDisplay.ViewHolder> {
     //Variables

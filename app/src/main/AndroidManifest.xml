@@ -13,10 +13,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ReviewDekho"
         android:usesCleartextTraffic="true">
-        <activity android:name=".SystemDashboard.EditProfileGeneralSettings"></activity>
+        <activity android:name=".SystemDashboard.AddReview"></activity>
+        <activity android:name=".SystemDashboard.EditProfileGeneralSettings" />
         <activity android:name=".SystemDashboard.ContactUsPage" />
         <activity android:name=".SystemDashboard.AboutReviewDekho" />
-        <activity android:name=".CommentsView" />
+        <activity android:name=".Comments.CommentsView" />
         <activity android:name=".SystemDashboard.CategoryView" />
         <activity android:name=".SystemDashboard.SettingsProfile" />
         <activity android:name=".SystemDashboard.Settings" />
