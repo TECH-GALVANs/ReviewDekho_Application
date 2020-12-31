@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.sql.Timestamp;
 
-public class SubCateory {
+public class SubCategory {
     @SerializedName("sub_category_id")
     private int subCategoryId;
 
@@ -17,7 +17,7 @@ public class SubCateory {
     @SerializedName("sub_category_updated_at")
     private  Timestamp subUpdatedAt;
 
-
+    @SerializedName("category")
     private  Category category;
 
     public int getSubCategoryId() {

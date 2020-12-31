@@ -122,6 +122,7 @@ public class Login extends AppCompatActivity {
                         sharedPrefManager.setRolePreference(userDataClass.getUserRole());
                         sharedPrefManager.setUserId(userDataClass.getUserRole());
                         sharedPrefManager.setUserName(userDataClass.getUsername());
+                        sharedPrefManager.setImage(userDataClass.getProfileImage());
 
                         //set progressbar Off
                         relativeLayoutProgress.setVisibility(View.GONE);

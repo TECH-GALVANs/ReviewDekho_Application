@@ -32,4 +32,30 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/ll_user"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_centerVertical="true"
+        android:orientation="vertical">
+        <ImageView
+            android:id="@+id/no_data"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:src="@drawable/nodata"
+            android:visibility="visible"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="No Data Found"
+            android:textAllCaps="true"
+            android:textSize="22sp"
+            android:fontFamily="@font/muli_black"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"/>
+    </LinearLayout>
+
 </RelativeLayout>

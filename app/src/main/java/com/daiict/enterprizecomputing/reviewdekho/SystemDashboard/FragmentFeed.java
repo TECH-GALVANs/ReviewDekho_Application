@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -34,10 +35,15 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 
 public class FragmentFeed extends Fragment {
+    SwipeRefreshLayout swipeRefreshLayout;
     ArrayList<UserReviewClass> userDataClasses = new ArrayList<UserReviewClass>();
     RecyclerView recyclerView;
     AdapterUserReviewDisplay adapterUserReviewDisplay;
     ImageView imageView;
+
+    //Size data for ArrayList if data updated then load data in the
+    int size=0;
+    boolean valueFirst = false;
 
     SharedPrefManager sharedPrefManager ;
     @Override
@@ -48,7 +54,14 @@ public class FragmentFeed extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_feed, container, false);
         imageView = view.findViewById(R.id.feed_frag_add);
+
+        //Swiper To swipe load the new data;
+        swipeRefreshLayout = view.findViewById(R.id.feed_swiper);
+
+
+
         recyclerView = view.findViewById(R.id.feed_recyclerview);
+
 
         adapterUserReviewDisplay = new AdapterUserReviewDisplay(getActivity(),userDataClasses);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -85,10 +98,19 @@ public class FragmentFeed extends Fragment {
 
         databaseConnection();
 
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                dataReload();
+                swipeRefreshLayout.setRefreshing(false);
+            }
+        });
+
 
 
         return view;
     }
+
 
     public void databaseConnection()
     {
@@ -106,6 +128,13 @@ public class FragmentFeed extends Fragment {
                 {
                     userDataClasses = response.body();
                     Log.e("Feed Fragment : ","Data Got : "+userDataClasses.size());
+
+                    if(!valueFirst)
+                    {
+                        size= userDataClasses.size();
+                        valueFirst = true;
+                    }
+
                     dataChangeRView();
 //                    Toast.makeText(getContext(), userDataClasses.size(), Toast.LENGTH_SHORT).show();
                 }
@@ -123,5 +152,18 @@ public class FragmentFeed extends Fragment {
     {
         adapterUserReviewDisplay  = new AdapterUserReviewDisplay(getActivity(),userDataClasses);
         recyclerView.setAdapter(adapterUserReviewDisplay);
+    }
+
+    private void dataReload()
+    {
+        databaseConnection();
+        if(size==userDataClasses.size())
+        {
+            Log.e("Feed Reload", "No change Same data");
+        }
+        else
+        {
+            dataChangeRView();
+        }
     }
 }

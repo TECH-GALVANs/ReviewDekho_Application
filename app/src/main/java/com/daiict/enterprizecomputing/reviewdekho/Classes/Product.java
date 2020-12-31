@@ -8,7 +8,8 @@ public class Product {
     @SerializedName("product_id")
     private int productid;
 
-    private SubCateory subCateory;
+    @SerializedName("subCategory")
+    private SubCategory subCateory;
 
     @SerializedName("product_name")
     private String productName;
@@ -19,17 +20,23 @@ public class Product {
     @SerializedName("product_price")
     private int productPrice;
 
+    @SerializedName("image")
+    private String image;
+
+
     @SerializedName("product_created_at")
     private Timestamp createdAt;
 
     @SerializedName("product_updated_at")
     private Timestamp updatedAt;
 
+    public String getImage(){return image;}
+
     public int getProductid() {
         return productid;
     }
 
-    public SubCateory getSubCateory() {
+    public SubCategory getSubCateory() {
         return subCateory;
     }
 

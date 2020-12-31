@@ -22,7 +22,10 @@ public class HowWeWork extends AppCompatActivity {
         setContentView(R.layout.activity_how_we_work);
         details = findViewById(R.id.text_details);
 
-        details.setText(" ");
+        details.setText("Review Management System is an online platform that is used to\n" +
+                "view and add reviews of any products.\nThis platform is available in mobile as well as in web also. As, we have\n" +
+                "made web-app and android application of these platform.\nThe reviewers will share their opinion as well as reviews of any\n" +
+                "products. ");
 
     }
 

@@ -45,7 +45,6 @@
             android:id="@+id/linear_layout_user_visible"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:visibility="gone"
             android:orientation="vertical">
 
     <LinearLayout
@@ -64,7 +63,7 @@
 
 
             <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/circleImageView"
+                android:id="@+id/circleImageView_profile"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_marginStart="8dp"
@@ -84,16 +83,18 @@
                 android:id="@+id/profilefrag_btn_floating_addimage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="36dp"
+                android:layout_marginEnd="12dp"
+                android:backgroundTint="@color/white"
                 android:clickable="true"
-                app:tint="@color/blue"
                 app:fabCustomSize="30dp"
-                app:layout_constraintBottom_toBottomOf="@+id/circleImageView"
-                app:layout_constraintEnd_toEndOf="@+id/circleImageView"
-                app:layout_constraintTop_toTopOf="@+id/circleImageView"
-                app:layout_constraintVertical_bias="0.88"
+                app:layout_constraintBottom_toBottomOf="@+id/circleImageView_profile"
+                app:layout_constraintEnd_toEndOf="@+id/circleImageView_profile"
+                app:layout_constraintTop_toTopOf="@+id/circleImageView_profile"
+                app:layout_constraintVertical_bias="1.0"
                 app:maxImageSize="30dp"
-                android:backgroundTint="@color/blue"
                 app:srcCompat="@drawable/add"
+                app:tint="@color/black"
                 tools:ignore="KeyboardInaccessibleWidget" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
@@ -148,6 +149,7 @@
         android:paddingRight="10dp">
 
         <LinearLayout
+            android:id="@+id/its_reviewer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
@@ -161,11 +163,37 @@
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 android:orientation="vertical"
                 android:padding="4dp"
+                tools:listitem="@layout/card_profile"
                 android:visibility="visible" />
 
 
         </LinearLayout>
+
     </ScrollView>
+            <LinearLayout
+                android:id="@+id/ll_user_profile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:orientation="vertical">
+                <ImageView
+                    android:id="@+id/no_data"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:src="@drawable/nodata"
+                    android:visibility="visible"
+                    tools:ignore="ContentDescription" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="No Data Found"
+                    android:textAllCaps="true"
+                    android:textSize="22sp"
+                    android:fontFamily="@font/muli_black"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center"/>
+            </LinearLayout>
         </LinearLayout>
 
     <LinearLayout

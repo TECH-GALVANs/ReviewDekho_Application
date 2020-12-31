@@ -24,6 +24,13 @@ public class SharedPrefManager {
         editor.apply();
     }
 
+    public void setRequestType(boolean requestReviewer)
+    {
+        SharedPreferences.Editor editor = sharedpreferencesData.edit();
+        editor.putBoolean("request_reviewer", requestReviewer);
+        editor.apply();
+    }
+
     public void setUserName(String userName)
     {
         SharedPreferences.Editor editor = sharedpreferencesData.edit();
@@ -58,11 +65,37 @@ public class SharedPrefManager {
         editor.putString("URL", url_Test);
         editor.apply();
     }
+
+    public void setImage(String image)
+    {
+        SharedPreferences.Editor editor = sharedpreferencesData.edit();
+        editor.putString("user_image", image);
+        editor.apply();
+    }
+
+    public String getImage()
+    {
+        return sharedpreferencesData.getString("user_image","");
+    }
+
+    public void setCatId(int catId)
+    {
+        SharedPreferences.Editor editor = sharedpreferencesData.edit();
+        editor.putInt("category_id", catId);
+        editor.apply();
+    }
+
+    public int getCatId(){return sharedpreferencesData.getInt("category_id",-1);}
+
     public String getBaseURL()
     {
         return sharedpreferencesData.getString("URL","http://192.168.0.134:9090/api/");
     }
 
+    public boolean getRequestType()
+    {
+        return sharedpreferencesData.getBoolean("request_reviewer",false);
+    }
 
     public int getUserId()
     {

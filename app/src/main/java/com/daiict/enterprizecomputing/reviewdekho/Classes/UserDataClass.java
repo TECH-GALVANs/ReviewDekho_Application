@@ -18,13 +18,10 @@ public class UserDataClass {
     @SerializedName("user_role")
     private int userRole;
 
-    public UserDataClass(UserDataClass userDataClass)
-    {
-        this.emailID = emailID;
-        this.username = username;
-        this.accPass = accPass;
-        this.userRole = userRole;
-    }
+    @SerializedName("profileImage")
+    private String profileImage;
+
+
 
     public UserDataClass(String emailID, String username, String accPass, int userRole) {
         this.emailID = emailID;
@@ -33,6 +30,10 @@ public class UserDataClass {
         this.userRole = userRole;
     }
 
+
+    public void setProfileImage(String image){this.profileImage = image;}
+
+    public String getProfileImage() {return  profileImage; }
 
     public int getUser_id() {
         return user_id;

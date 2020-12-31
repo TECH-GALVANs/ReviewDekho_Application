@@ -18,8 +18,10 @@ public class UserReviewClass {
     @SerializedName("review_updated_at")
     private Timestamp reviewUpdatedAt;
 
+    @SerializedName("user")
     private  UserDataClass userData;
 
+    @SerializedName("product")
     private Product product;
 
     public int getReviewID() {
