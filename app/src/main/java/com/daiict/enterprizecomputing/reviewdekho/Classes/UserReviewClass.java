@@ -24,6 +24,10 @@ public class UserReviewClass {
     @SerializedName("product")
     private Product product;
 
+    public UserReviewClass(int reviewID) {
+        this.reviewID = reviewID;
+    }
+
     public int getReviewID() {
         return reviewID;
     }

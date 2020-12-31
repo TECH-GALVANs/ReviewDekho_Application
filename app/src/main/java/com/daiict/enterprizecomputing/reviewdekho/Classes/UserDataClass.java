@@ -22,6 +22,9 @@ public class UserDataClass {
     private String profileImage;
 
 
+    public UserDataClass(int user_id) {
+        this.user_id = user_id;
+    }
 
     public UserDataClass(String emailID, String username, String accPass, int userRole) {
         this.emailID = emailID;

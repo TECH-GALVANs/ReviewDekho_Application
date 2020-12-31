@@ -98,7 +98,7 @@ public class Login extends AppCompatActivity {
     private void databaseConnectionLogin(String emailFetch)
     {
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.43.154:9090/api/")
+                .baseUrl("http://192.168.0.134:9090/api/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 

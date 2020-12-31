@@ -21,6 +21,7 @@ import com.daiict.enterprizecomputing.reviewdekho.Classes.SharedPrefManager;
 import com.daiict.enterprizecomputing.reviewdekho.Classes.UserDataClass;
 import com.daiict.enterprizecomputing.reviewdekho.Classes.UserReviewClass;
 import com.daiict.enterprizecomputing.reviewdekho.Comments.CommentsView;
+import com.daiict.enterprizecomputing.reviewdekho.DashboardLogin.DashboardLogin;
 import com.daiict.enterprizecomputing.reviewdekho.DatabaseConnection.API;
 import com.daiict.enterprizecomputing.reviewdekho.R;
 
@@ -73,7 +74,10 @@ public class FragmentFeed extends Fragment {
             imageView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
+                    Intent intent = new Intent(getActivity(), DashboardLogin.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    //intent.putExtra("Fragment", "profilefragment");
+                    startActivity(intent);
                 }
             });
         }

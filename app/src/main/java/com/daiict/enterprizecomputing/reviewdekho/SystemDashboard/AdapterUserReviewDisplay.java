@@ -6,32 +6,52 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Intent;
 import android.util.Base64;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.daiict.enterprizecomputing.reviewdekho.Classes.Category;
+import com.daiict.enterprizecomputing.reviewdekho.Classes.CommentSend;
+import com.daiict.enterprizecomputing.reviewdekho.Classes.CommentsClass;
+import com.daiict.enterprizecomputing.reviewdekho.Classes.LikeClass;
 import com.daiict.enterprizecomputing.reviewdekho.Classes.Product;
+import com.daiict.enterprizecomputing.reviewdekho.Classes.ReportClass;
 import com.daiict.enterprizecomputing.reviewdekho.Classes.SharedPrefManager;
 import com.daiict.enterprizecomputing.reviewdekho.Classes.SubCategory;
 import com.daiict.enterprizecomputing.reviewdekho.Classes.UserDataClass;
 import com.daiict.enterprizecomputing.reviewdekho.Classes.UserReviewClass;
 import com.daiict.enterprizecomputing.reviewdekho.Comments.CommentsView;
+import com.daiict.enterprizecomputing.reviewdekho.DatabaseConnection.API;
 import com.daiict.enterprizecomputing.reviewdekho.R;
+import com.google.gson.Gson;
 
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
 public class AdapterUserReviewDisplay extends RecyclerView.Adapter<AdapterUserReviewDisplay.ViewHolder> {
+    int var = -1;
+    boolean status = false;
+    boolean statusReport = false;
+    int reviewid = -1;
+
     //Variables
     private ArrayList<UserReviewClass> reviewData;
     private Activity activity;
@@ -71,7 +91,6 @@ public class AdapterUserReviewDisplay extends RecyclerView.Adapter<AdapterUserRe
         holder.textViewDetails.setText(reviewClass.getReviewDescription());
 
 
-
         byte[] decodedString = Base64.decode(reviewClass.getProduct().getImage(), Base64.DEFAULT);
         Glide.with(activity).asBitmap().load(decodedString).into(holder.imageView);
 
@@ -105,6 +124,8 @@ public class AdapterUserReviewDisplay extends RecyclerView.Adapter<AdapterUserRe
             textViewDetails = itemView.findViewById(R.id.feed_frag_details);
 
             imageViewProfile = itemView.findViewById(R.id.circleImageView);
+            var = getAdapterPosition();
+
 
 
 
@@ -123,13 +144,19 @@ public class AdapterUserReviewDisplay extends RecyclerView.Adapter<AdapterUserRe
                 btnLike.setVisibility(View.INVISIBLE);
                 btnReport.setVisibility(View.INVISIBLE);
             }
-            else{
+
                 btnLike.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        sendLikeData();
+
                        btnLike.setClickable(false);
                       // btnLike.setBackgroundColor();
+                        var = getAdapterPosition();
+                        sendLikeData();
+                        if(status)
+                        {
+                            btnLike.setColorFilter(ContextCompat.getColor(activity,R.color.red));
+                        }
 
                     }
                 });
@@ -139,13 +166,18 @@ public class AdapterUserReviewDisplay extends RecyclerView.Adapter<AdapterUserRe
                     public void onClick(View v) {
                         Intent intent = new Intent(activity, CommentsView.class);
                         //intent.putExtra("Fragment", "profilefragment");
-                        activity.startActivity(intent);
+                        //Toast.makeText(activity, ""+reviewData.get(getAdapterPosition()).getReviewID(), Toast.LENGTH_SHORT).show();
+                         intent.putExtra("review_id",reviewData.get(getAdapterPosition()).getReviewID());
+                         intent.putExtra("desc",reviewData.get(getAdapterPosition()).getReviewDescription());
+                          activity.startActivity(intent);
                     }
                 });
 
                 btnReport.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                       // sendReportData();
+                        reviewid   = reviewData.get(getAdapterPosition()).getReviewID();
                         AlertDialog.Builder Builder = new AlertDialog.Builder(activity);
                         View view_pop = LayoutInflater.from(activity).inflate(R.layout.report_view, null);
 
@@ -165,9 +197,10 @@ public class AdapterUserReviewDisplay extends RecyclerView.Adapter<AdapterUserRe
                         confirm.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                               dialog.cancel();
-//                                sendReportData();
-//                                btnReport.setClickable(false);
+
+                                sendReportData();
+                                 //statusReport = true;
+                                dialog.cancel();
                                 //ReportData(int userID,int reviewID,String desc);
                             }
                         });
@@ -185,15 +218,62 @@ public class AdapterUserReviewDisplay extends RecyclerView.Adapter<AdapterUserRe
 
 
 
-        }
+
     }
 
     private void sendReportData() {
 
+        Intent intent = new Intent(activity, ReportView.class);
+        //intent.putExtra("Fragment", "profilefragment");
+        //Toast.makeText(activity, ""+reviewData.get(getAdapterPosition()).getReviewID(), Toast.LENGTH_SHORT).show();
+        intent.putExtra("review_id",reviewid);
+        activity.startActivity(intent);
     }
 
     private void sendLikeData()
     {
+        databaseSendLike();
+    }
 
+
+
+
+    private void databaseSendLike() {
+        LikeClass likeClass;
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(sharedPrefManager.getBaseURL())
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        //TOdo
+
+        try {
+            UserDataClass userDataClass = new UserDataClass(sharedPrefManager.getUserId());
+            UserReviewClass userReviewClass = new UserReviewClass(reviewData.get(var).getReviewID());
+            likeClass = new LikeClass(userReviewClass,userDataClass);
+            Log.e("data "," "+userDataClass.getUser_id()+" "+userReviewClass.getReviewID());
+
+
+            API instanceofapi = retrofit.create(API.class);
+            Call<LikeClass> call = instanceofapi.doLike(likeClass);
+            call.enqueue(new Callback<LikeClass>() {
+                @Override
+                public void onResponse(Call<LikeClass> call, Response<LikeClass> response) {
+                    if(response.isSuccessful()) {
+                        Log.e("Data Updated", "done");
+                        status = true;
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<LikeClass> call, Throwable t) {
+                    Log.e("Data not Updated ","failed");
+                    // databaseConnection();
+                }
+            });
+
+        } catch (Exception e) {
+
+        }
     }
 }
