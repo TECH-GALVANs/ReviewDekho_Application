@@ -1,13 +1,16 @@
 package com.daiict.enterprizecomputing.reviewdekho.DatabaseConnection;
 
+import com.daiict.enterprizecomputing.reviewdekho.Classes.AddReviewClassData;
 import com.daiict.enterprizecomputing.reviewdekho.Classes.Category;
-import com.daiict.enterprizecomputing.reviewdekho.Classes.ImageClass;
+import com.daiict.enterprizecomputing.reviewdekho.Classes.CommentSend;
+import com.daiict.enterprizecomputing.reviewdekho.Classes.CommentsClass;
+import com.daiict.enterprizecomputing.reviewdekho.Classes.LikeClass;
 import com.daiict.enterprizecomputing.reviewdekho.Classes.Product;
+import com.daiict.enterprizecomputing.reviewdekho.Classes.ReportClass;
 import com.daiict.enterprizecomputing.reviewdekho.Classes.SubCategory;
 import com.daiict.enterprizecomputing.reviewdekho.Classes.UserDataClass;
 import com.daiict.enterprizecomputing.reviewdekho.Classes.UserReviewClass;
 import com.daiict.enterprizecomputing.reviewdekho.SignUp.SignupClass;
-import com.daiict.enterprizecomputing.reviewdekho.SignUp.Posts;
 
 import java.util.ArrayList;
 
@@ -46,5 +49,22 @@ public interface API {
 
     @GET("product/sub_category/{id}")
     Call<ArrayList<Product>> getProductsById(@Path("id") int sub_categoryId);
+
+    @GET("comment/review/{id}")
+    Call<ArrayList<CommentsClass>> getCommentsByReviewId(@Path("id") int reviewId);
+
+    @POST("comment")
+    Call<CommentSend> createComment(@Body CommentSend commentSend);
+
+    @POST("like")
+    Call<LikeClass> doLike(@Body LikeClass likeClass);
+
+    @POST("report")
+    Call<ReportClass> doReport(@Body ReportClass reportClass);
+
+    @POST("review")
+    Call<AddReviewClassData> reportReview(@Body AddReviewClassData addReview);
+
+
 
 }

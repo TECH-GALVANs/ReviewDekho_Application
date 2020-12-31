@@ -17,6 +17,7 @@
         android:layout_marginEnd="10dp"
         android:orientation="vertical">
         <TextView
+            android:id="@+id/details_desc_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textStyle="normal"
@@ -26,44 +27,63 @@
             android:textSize="16sp"/>
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview_comments"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="100dp"
+            tools:listitem="@layout/card_comments" />
+        <LinearLayout
+            android:id="@+id/ll_not_visitor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingStart="4dp"
-            android:paddingEnd="4dp"
-            tools:listitem="@layout/card_comments" />
+            android:layout_gravity="bottom"
+            android:gravity="bottom"
+            android:orientation="horizontal">
 
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:hint="Comment"
+                android:textColor="@color/black"
+                app:boxStrokeColor="@color/black"
+                app:boxStrokeWidthFocused="2dp"
+                app:endIconMode="clear_text"
+                app:endIconTint="@color/black"
+                app:hintTextColor="@color/black"
+                android:textColorHint="@color/black"
+                app:startIconDrawable="@drawable/edit_write"
+                android:foregroundTint="@color/black"
+                app:startIconTint="@color/black">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/comments_add"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:layout_marginStart="5dp"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/muli_black"
+                    android:inputType="text" />
+
+                <!--Always remember to use material design components first add up the dependency and after that go to styles.xml and there change
+                style tag from current to new -> <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar.Bridge"> otherwise the application will crash-->
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:layout_marginStart="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="SEND"
+                android:onClick="sendButtonPressedComments"
+                android:fontFamily="@font/muli_black"
+                android:textAllCaps="true"
+                android:background="@drawable/button_design_transparent_border"/>
+
+        </LinearLayout>
 
 
     </LinearLayout>
     </ScrollView>
-
-    <com.google.android.material.textfield.TextInputLayout
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/login_edit_username"
-        android:textColor="@color/white"
-        app:boxStrokeColor="@color/white"
-        app:boxStrokeWidthFocused="2dp"
-        app:endIconMode="clear_text"
-        app:endIconTint="@color/black"
-        app:hintTextColor="@color/black"
-        android:textColorHint="@color/black"
-        app:startIconDrawable="@drawable/edit_write"
-        android:foregroundTint="@color/black"
-        app:startIconTint="@color/black">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/comments_add"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:textColor="@color/black"
-            android:fontFamily="@font/muli_black"
-            android:inputType="text" />
-
-        <!--Always remember to use material design components first add up the dependency and after that go to styles.xml and there change
-        style tag from current to new -> <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar.Bridge"> otherwise the application will crash-->
-
-    </com.google.android.material.textfield.TextInputLayout>
 
 </LinearLayout>

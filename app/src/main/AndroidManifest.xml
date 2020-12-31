@@ -13,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ReviewDekho"
         android:usesCleartextTraffic="true">
-        <activity android:name=".SystemDashboard.RequestForReviewer"></activity>
+        <activity android:name=".SystemDashboard.ReportView"></activity>
+        <activity android:name=".SystemDashboard.RequestForReviewer" />
         <activity android:name=".SystemDashboard.AddReview" />
         <activity android:name=".SystemDashboard.EditProfileGeneralSettings" />
         <activity android:name=".SystemDashboard.ContactUsPage" />

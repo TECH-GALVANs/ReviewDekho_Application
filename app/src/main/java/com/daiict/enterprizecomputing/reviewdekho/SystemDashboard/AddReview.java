@@ -18,11 +18,14 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.daiict.enterprizecomputing.reviewdekho.Classes.AddReviewClassData;
 import com.daiict.enterprizecomputing.reviewdekho.Classes.Category;
+import com.daiict.enterprizecomputing.reviewdekho.Classes.CommentsClass;
 import com.daiict.enterprizecomputing.reviewdekho.Classes.ImageClass;
 import com.daiict.enterprizecomputing.reviewdekho.Classes.Product;
 import com.daiict.enterprizecomputing.reviewdekho.Classes.SharedPrefManager;
 import com.daiict.enterprizecomputing.reviewdekho.Classes.SubCategory;
+import com.daiict.enterprizecomputing.reviewdekho.Classes.UserDataClass;
 import com.daiict.enterprizecomputing.reviewdekho.Classes.UserReviewClass;
 import com.daiict.enterprizecomputing.reviewdekho.DatabaseConnection.API;
 import com.daiict.enterprizecomputing.reviewdekho.R;
@@ -48,6 +51,7 @@ ArrayList<String> arrayListPName = new ArrayList<>();
 int prodIndex=-1;
 Spinner category,subCategory, product;
 EditText review;
+int prodid=-1;
 
 
 Button upload;
@@ -106,6 +110,7 @@ Button upload;
                 byte[] decodedString = Base64.decode(arrayListP.get(prodIndex).getImage(), Base64.DEFAULT);
                 Glide.with(getApplicationContext()).asBitmap().load(decodedString).into(imageView);
 
+                prodid = arrayListP.get(prodIndex).getProductid();
             }
 
             @Override
@@ -271,6 +276,36 @@ Button upload;
     private void sendDataForReviewer()
     {
         //Database To store Data
+
+        Product p = new Product(prodid);
+        UserDataClass userDataClass = new UserDataClass(sharedPrefManager.getUserId());
+        AddReviewClassData addReview = new AddReviewClassData(review.getText().toString(),p,userDataClass);
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(sharedPrefManager.getBaseURL())
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        API instanceofapi = retrofit.create(API.class);
+        Call<AddReviewClassData> call = instanceofapi.reportReview(addReview);
+        call.enqueue(new Callback<AddReviewClassData>() {
+            @Override
+            public void onResponse(Call<AddReviewClassData> call, Response<AddReviewClassData> response) {
+                if (response.isSuccessful()) {
+
+                    Toast.makeText(AddReview.this, "Your Post has been Posted", Toast.LENGTH_LONG).show();
+                    review.setText("");
+//                   Toast.makeText(getContext(), userDataClasses.size(), Toast.LENGTH_SHORT).show();
+                }
+                // Log.e("Feed Fragment : ","Data Got : "+userDataClasses.size());
+            }
+
+            @Override
+            public void onFailure(Call<AddReviewClassData> call, Throwable t) {
+                Log.e("Comments : ", "Error : " + t.getMessage());
+
+            }
+        });
     }
 
 

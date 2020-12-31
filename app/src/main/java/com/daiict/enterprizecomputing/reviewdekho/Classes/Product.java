@@ -30,6 +30,10 @@ public class Product {
     @SerializedName("product_updated_at")
     private Timestamp updatedAt;
 
+    public Product(int productid) {
+        this.productid = productid;
+    }
+
     public String getImage(){return image;}
 
     public int getProductid() {
