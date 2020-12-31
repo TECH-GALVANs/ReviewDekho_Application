@@ -25,5 +25,6 @@ public class CommentsView extends AppCompatActivity {
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         //intent.putExtra("Fragment",fragmentName);
         startActivity(intent);
+        finish();
     }
 }

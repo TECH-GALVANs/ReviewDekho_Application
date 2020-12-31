@@ -47,6 +47,7 @@ public class SplashScreen extends AppCompatActivity {
 
     private String email;
     private String pass;
+    private int role;
     UserDataClass userDataClass;
     private boolean state = false;
     private boolean isUSer = false;
@@ -59,7 +60,6 @@ public class SplashScreen extends AppCompatActivity {
         sharedPrefManager =new SharedPrefManager(this);
 
         sharedPrefManager.setBaseURL("http://192.168.43.154:9090/api/");
-
         top = AnimationUtils.loadAnimation(this, R.anim.top_animation);
         bottom = AnimationUtils.loadAnimation(this, R.anim.bottom_animation);
 
@@ -144,6 +144,7 @@ public class SplashScreen extends AppCompatActivity {
         SharedPrefManager sharedPrefManager = new SharedPrefManager(this);
         String tempEmail;
         String tempPass;
+        int roletemp;
         if(sharedPrefManager.getRolePreference() ==5)
         {
             isUSer = true;
@@ -152,6 +153,7 @@ public class SplashScreen extends AppCompatActivity {
 
         tempEmail = sharedPrefManager.getEmail();
         tempPass  =sharedPrefManager.getAccPassword();
+        roletemp = sharedPrefManager.getRolePreference();
         if(tempEmail.equals("") && tempPass.equals(""))
         {
             return false;
@@ -160,6 +162,7 @@ public class SplashScreen extends AppCompatActivity {
         {
             email = tempEmail;
             pass = tempPass;
+            role = roletemp;
             return true;
         }
 
@@ -182,8 +185,9 @@ public class SplashScreen extends AppCompatActivity {
                 {
                     Log.e("Dashboard Login","    Data Getting");
                     userDataClass = response.body();
-                    if(email.equals(userDataClass.getEmailID()) && pass.equals(userDataClass.getAccPass()))
+                    if(email.equals(userDataClass.getEmailID()) && pass.equals(userDataClass.getAccPass()) && role == userDataClass.getUserRole())
                     {
+                        Log.e("Splash Equal : ","Data is same as we got");
                         state = true;
                         return;
                     }

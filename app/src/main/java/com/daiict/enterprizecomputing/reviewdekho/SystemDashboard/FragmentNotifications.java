@@ -20,7 +20,7 @@ import java.util.Objects;
 
 public class FragmentNotifications extends Fragment {
     SharedPrefManager sharedPrefManager;
-    LinearLayout linearLayoutVisitor;
+    LinearLayout linearLayoutVisitor,linearLayoutuser;
     Button buttonLogin;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -29,11 +29,14 @@ public class FragmentNotifications extends Fragment {
         View view = inflater.inflate(R.layout.fragment_notifications, container, false);
           sharedPrefManager = new SharedPrefManager(getActivity());
         linearLayoutVisitor = view.findViewById(R.id.notification_fragment_visitor_view);
+        linearLayoutuser = view.findViewById(R.id.ll_user);
         if(sharedPrefManager.getRolePreference() != -1) {
             if (sharedPrefManager.getRolePreference() == 5) {
                 linearLayoutVisitor.setVisibility(View.VISIBLE);
             } else {
                 linearLayoutVisitor.setVisibility(View.GONE);
+                linearLayoutuser.setVisibility(View.VISIBLE);
+
             }
         }
         if(linearLayoutVisitor.getVisibility()==View.VISIBLE)

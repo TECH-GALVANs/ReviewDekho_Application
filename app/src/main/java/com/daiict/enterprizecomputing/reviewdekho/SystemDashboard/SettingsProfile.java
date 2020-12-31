@@ -41,6 +41,7 @@ public class SettingsProfile extends AppCompatActivity {
             {
                 requestReviewer.setVisibility(View.GONE);
             }
+
         }
 
     }
@@ -50,6 +51,7 @@ public class SettingsProfile extends AppCompatActivity {
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         //intent.putExtra("Fragment", "profilefragment");
         startActivity(intent);
+        finish();
 
     }
 
@@ -124,7 +126,25 @@ public class SettingsProfile extends AppCompatActivity {
     }
 
     public void requestReviwerMethod(View view) {
-        requestReviewer.setText("Requested...");
-        requestReviewer.setClickable(false);
+       beReviewer();
+    }
+
+    private void beReviewer()
+    {
+        if(!sharedPrefManager.getRequestType())
+        {
+
+            Intent intent = new Intent(this, ContactUsPage.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            //intent.putExtra("Fragment", "profilefragment");
+            startActivity(intent);
+
+        }
+        else
+        {
+            requestReviewer.setText("Requested...");
+            requestReviewer.setClickable(false);
+        }
+
     }
 }

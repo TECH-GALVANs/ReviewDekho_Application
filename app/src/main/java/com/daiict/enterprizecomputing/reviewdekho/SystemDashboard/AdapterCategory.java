@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.daiict.enterprizecomputing.reviewdekho.Classes.Category;
+import com.daiict.enterprizecomputing.reviewdekho.Classes.SharedPrefManager;
 import com.daiict.enterprizecomputing.reviewdekho.Classes.UserReviewClass;
 import com.daiict.enterprizecomputing.reviewdekho.R;
 
@@ -20,6 +21,7 @@ import java.util.ArrayList;
 public class AdapterCategory extends RecyclerView.Adapter<AdapterCategory.ViewHolder> {
     private ArrayList<Category> categoryArrayList;
     private Activity activity;
+    SharedPrefManager sharedPrefManager ;
 
     public AdapterCategory(Activity activity_context,ArrayList<Category> categoryArrayList)
     {
@@ -63,10 +65,12 @@ public class AdapterCategory extends RecyclerView.Adapter<AdapterCategory.ViewHo
         public void onClick(View v) {
             Category categoryObj = new Category();
             Intent intent = new Intent(activity,CategoryView.class);
+            sharedPrefManager = new SharedPrefManager(activity);
+            sharedPrefManager.setCatId((categoryArrayList.get(getAdapterPosition()).getCategoryId()));
             //intent.putExtra("Fragment", "profilefragment");
-            categoryObj = categoryArrayList.get(getAdapterPosition());
-            intent.putExtra("Category_Name",categoryObj.getCategoryName());
-            intent.putExtra("Category_Id",categoryObj.getCategoryId());
+           // categoryObj = categoryArrayList.get(getAdapterPosition());
+            intent.putExtra("Category_Name",(categoryArrayList.get(getAdapterPosition()).getCategoryName()));
+            //intent.putExtra("Category_Id",categoryObj.getCategoryId());
             activity.startActivity(intent);
         }
     }
